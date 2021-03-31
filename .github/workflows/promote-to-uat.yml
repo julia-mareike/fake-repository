@@ -13,11 +13,12 @@ jobs:
           fetch-depth: '0'
           # The branch you want to checkout (usually equal to `branchtomerge`)
           ref: 'dev'
-
-      - name: Promote dev -> uat
-        uses: devmasx/merge-branch@v1.3.1
+      - name: Merge Fast Forward
+        uses: MaximeHeckel/github-action-merge-fast-forward@v1.1.0
         with:
-          type: now
-          from_branch: dev
-          target_branch: uat
-          github_token: ${{ secrets.GITHUB_TOKEN }}
+          # Branch to merge
+          branchtomerge: dev
+          # Branch that will be updated
+          branch: uat
+        env:
+          GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
