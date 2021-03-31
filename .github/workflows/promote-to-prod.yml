@@ -19,7 +19,7 @@ jobs:
           # Branch to merge
           branchtomerge: uat
           # Branch that will be updated
-          branch: prod
+          branch: main
         env:
           GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
 
