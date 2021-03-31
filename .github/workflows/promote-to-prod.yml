@@ -1,0 +1,23 @@
+name: 'Promote to PROD'
+on:
+  workflow_dispatch
+
+jobs:
+  promote-to-uat:
+    runs-on: ubuntu-latest
+    steps:
+      - name: Checkout
+        uses: actions/checkout@v2
+        with:
+          # Fetch the whole history to prevent unrelated history errors
+          fetch-depth: '0'
+          # The branch you want to checkout (usually equal to `branchtomerge`)
+          ref: 'uat'
+
+      - name: Promote uat -> main
+        uses: devmasx/merge-branch@v1.3.1
+        with:
+          type: now
+          from_branch: uat
+          target_branch: main
+          github_token: ${{ secrets.GITHUB_TOKEN }}
