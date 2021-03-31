@@ -21,3 +21,5 @@ jobs:
           from_branch: uat
           target_branch: main
           github_token: ${{ secrets.GITHUB_TOKEN }}
+
+######
